@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Navigate to the previous slide
   document
-    .querySelector('.container-arrow .arrow-button img[src="/left-arrow.png"]')
+    .querySelector('.container-arrow .arrow-button img[src="./left-arrow.png"]')
     .parentNode.addEventListener('click', function () {
       slides[currentSlide].style.display = 'none';
       currentSlide--;
@@ -58,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Navigate to the next slide
   document
-    .querySelector('.container-arrow .arrow-button img[src="/right-arrow.png"]')
+    .querySelector(
+      '.container-arrow .arrow-button img[src="./right-arrow.png"]'
+    )
     .parentNode.addEventListener('click', function () {
       slides[currentSlide].style.display = 'none';
       currentSlide++;
@@ -75,38 +77,38 @@ document.addEventListener('DOMContentLoaded', function () {
       element.innerText = `0${currentSlide + 1} / 04`;
     });
   }
-});
 
-// Handle the FAQ accordion functionality
-let faqs = document.getElementsByClassName('faq-page');
+  // Handle the FAQ accordion functionality
+  let faqs = document.getElementsByClassName('faq-page');
 
-// Iterate through each FAQ item
-for (let i = 0; i < faqs.length; i++) {
-  // Attach a click event listener to each FAQ item
-  faqs[i].addEventListener('click', function (event) {
-    let clickedFAQ = event.currentTarget; // Get the current FAQ item that was clicked
+  // Iterate through each FAQ item
+  for (let i = 0; i < faqs.length; i++) {
+    // Attach a click event listener to each FAQ item
+    faqs[i].addEventListener('click', function (event) {
+      let clickedFAQ = event.currentTarget; // Get the current FAQ item that was clicked
 
-    // Loop through all FAQ items
-    for (let j = 0; j < faqs.length; j++) {
-      // If the FAQ item is not the one that was clicked
-      if (faqs[j] !== clickedFAQ) {
-        faqs[j].classList.remove('active'); // Remove the "active" class
-        faqs[j].nextElementSibling.style.display = 'none'; // Hide its content/body
+      // Loop through all FAQ items
+      for (let j = 0; j < faqs.length; j++) {
+        // If the FAQ item is not the one that was clicked
+        if (faqs[j] !== clickedFAQ) {
+          faqs[j].classList.remove('active'); // Remove the "active" class
+          faqs[j].nextElementSibling.style.display = 'none'; // Hide its content/body
+        }
       }
-    }
 
-    // Toggle "active" class for the clicked FAQ item
-    clickedFAQ.classList.toggle('active');
+      // Toggle "active" class for the clicked FAQ item
+      clickedFAQ.classList.toggle('active');
 
-    // Toggle the display of the clicked FAQ item's content/body
-    let body = clickedFAQ.nextElementSibling;
-    if (body.style.display === 'block') {
-      body.style.display = 'none';
-    } else {
-      body.style.display = 'block';
-    }
-  });
-}
+      // Toggle the display of the clicked FAQ item's content/body
+      let body = clickedFAQ.nextElementSibling;
+      if (body.style.display === 'block') {
+        body.style.display = 'none';
+      } else {
+        body.style.display = 'block';
+      }
+    });
+  }
+});
 
 // Handle the Contact form functionality
 const submitForm = () => {
